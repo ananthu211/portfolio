@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Ananthu — Portfolio Copilot</title>
+  <meta name="description" content="Ask anything about Ananthu S — his work, process, and the AI products he's shipped." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/copilot.css" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="co-cursor-ring" id="coCursorRing"></div>
+  <div class="co-cursor-dot"  id="coCursorDot"></div>
+
+  <div class="co-layout" id="coLayout">
+
+    <!-- ══════════════════════════════════════════
+         SIDEBAR
+    ══════════════════════════════════════════ -->
+    <aside class="co-sidebar">
+
+      <div class="co-sidebar-top">
+        <a href="index.html" class="co-back-btn">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Portfolio
+        </a>
+
+        <button class="co-new-btn" id="coNewBtn" title="Clear conversation">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none">
+            <path d="M3 8h10M8 3v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="co-sidebar-brand">
+        <div class="co-brand-mark">✦</div>
+        <div>
+          <div class="co-brand-name">Portfolio Copilot</div>
+          <div class="co-brand-sub">Ananthu S</div>
+        </div>
+      </div>
+
+      <div class="co-threads-label">Topics covered</div>
+      <div class="co-threads" id="coThreads">
+        <div class="co-threads-empty">Start a conversation below — topics will appear here.</div>
+      </div>
+
+      <div class="co-sidebar-footer">
+        <div class="co-profile">
+          <div class="co-profile-av">AS</div>
+          <div class="co-profile-info">
+            <span class="co-profile-name">Ananthu S</span>
+            <span class="co-profile-role">Lead UX · Prevalent AI</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ══════════════════════════════════════════
+         MAIN CHAT
+    ══════════════════════════════════════════ -->
+    <main class="co-main">
+
+      <div class="co-messages" id="coMessages">
+
+        <!-- Welcome state -->
+        <div class="co-welcome" id="coWelcome">
+          <div class="co-welcome-glyph">✦</div>
+          <h1 class="co-welcome-title">Ask me anything<br><em>about Ananthu.</em></h1>
+          <p class="co-welcome-sub">I know his work, his process, and what makes him tick.<br>Start below or pick a prompt.</p>
+
+          <div class="co-starter-grid">
+
+            <button class="co-starter" data-q="Show me his projects">
+              <span class="co-starter-icon">◈</span>
+              <div class="co-starter-body">
+                <span class="co-starter-title">See his work</span>
+                <span class="co-starter-desc">Two shipped enterprise products</span>
+              </div>
+            </button>
+
+            <button class="co-starter" data-q="How does he approach design?">
+              <span class="co-starter-icon">◎</span>
+              <div class="co-starter-body">
+                <span class="co-starter-title">Design process</span>
+                <span class="co-starter-desc">Research-first, systems thinking</span>
+              </div>
+            </button>
+
+            <button class="co-starter co-starter--featured" data-q="Show me the Navigator demo">
+              <span class="co-starter-icon">✦</span>
+              <div class="co-starter-body">
+                <span class="co-starter-title">Try Navigator — live</span>
+                <span class="co-starter-desc">The AI product he designed, running now</span>
+              </div>
+              <span class="co-starter-badge">Interactive</span>
+            </button>
+
+            <button class="co-starter" data-q="What makes him different from other designers?">
+              <span class="co-starter-icon">◇</span>
+              <div class="co-starter-body">
+                <span class="co-starter-title">Why Ananthu?</span>
+                <span class="co-starter-desc">The intersection nobody else occupies</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+        <!-- /welcome -->
+
+      </div><!-- /co-messages -->
+
+      <!-- Input bar -->
+      <div class="co-input-area">
+        <div class="co-input-wrap">
+          <textarea id="coInput"
+            placeholder="Ask about his work, process, or availability…"
+            rows="1"
+            autocomplete="off"></textarea>
+          <button id="coSend" aria-label="Send">
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="none">
+              <path d="M8 13V3M8 3L4 7M8 3l4 4"
+                stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <p class="co-disclaimer">This copilot only knows what Ananthu has shared — ask him anything about his work.</p>
+      </div>
+
+    </main>
+
+    <!-- ══════════════════════════════════════════
+         CANVAS PANEL
+    ══════════════════════════════════════════ -->
+    <aside class="co-canvas" id="coCanvas">
+
+      <div class="co-canvas-header">
+        <div class="co-canvas-label" id="coCanvasLabel">Canvas</div>
+        <button class="co-canvas-close" id="coCanvasClose" aria-label="Close canvas">
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="none">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="co-canvas-body" id="coCanvasBody">
+        <!-- Populated dynamically -->
+      </div>
+
+    </aside>
+
+  </div><!-- /co-layout -->
+
+  <script src="js/copilot.js"></script>
+</body>
+</html>
